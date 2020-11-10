@@ -1,0 +1,26 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+
+ {% block sidemenu %}
+     {% include 'includes/sidemenu.html.twig' %}
+ {% endblock %}
+
+
+{% block fos_user_content %}
+
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container">
+                {% block body %}
+
+                    {% include "@FOSUser/Profile/edit_content.html.twig" %}
+
+                {% endblock %}
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+        {% include 'includes/footer.html.twig' %}
+    </div>
+
+{% endblock fos_user_content %}

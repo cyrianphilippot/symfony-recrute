@@ -1,0 +1,73 @@
+{% extends '::default/index.html.twig' %}
+
+
+{% block title %}
+    Accueil - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {{ parent() }}
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">BR Plateforme Job</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">BR Plateforme Job</a></li>
+                <li class="#">Candidatures</li>
+                <li class="active">Listes des Candidatures</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Listes des Candidature</h3></div>
+
+                {% for message in app.session.flashbag.get('info') %}
+                    <div class="alert alert-info">Message flash : {{ message }}</div>
+                {% endfor %}
+
+                <ul class="list-group">
+                    {% for application in listApplications %}
+                        <li class="list-group-item">
+                            <h2 class="list-group-item-heading">
+                                <a href="{{ path('platform_view', {'slug': application.advert.slug}) }}">
+                                    {{ application.advert.title }}</a>
+                                </a>
+                            </h2>
+
+                            <h6>Par {{ application.advert.author }}  , le {{ application.advert.date|date('d/m/Y') }} </h6>
+
+
+
+                            <span class="badge badge-info">
+
+
+                                <a href="{{ path('platform_application_view', {'id': application.id}) }}" class="btn btn-info">
+                                    Voir votre candidature</a>
+
+                           </span>
+
+
+                            <p class="list-group-item-text">
+                                {{ application.content | truncate(200)  }}
+                            </p>
+
+                            <p>
+                                <a href="{{ path('platform_view', {'slug': application.advert.slug}) }}" class="btn btn-info">
+                                    AFFICHER LE DETAIL DE L'OFFRE</a>
+                            </p>
+
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div> <!-- panel -->
+        </div> <!-- col -->
+    </div> <!-- End row -->
+
+{% endblock %}

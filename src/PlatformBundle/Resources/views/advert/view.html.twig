@@ -1,0 +1,164 @@
+{# src/PlatformBundle/Resources/view/Advert/view.html.twig #}
+{% extends '::default/index.html.twig' %}
+
+{% block title %}
+    Lecture d'une annonce - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">BR Plateforme Job</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">BR Plateforme Job</a></li>
+                <li><a href="#">Advert</a></li>
+
+                <li class="active">{{ advert.title }}</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- List Groups -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-default">
+
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+            </div> <!-- panel -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div style="float: left; margin-right: 1em;">
+                        {# On vérifie qu'une image soit bien associée à l'article #}
+                        {% if advert.image is not null %}
+                            <img
+                                    src="{{ asset(advert.image.AssetPath) }}"
+                                    alt="{{ advert.title }}"
+                                    height="60"
+                            />
+                        {% endif %}
+                    </div>
+                    <h3 class="panel-title">{{ advert.title }}</h3>
+                    <h6>Par {{ advert.author }}  , le {{ advert.date|date('d/m/Y') }} </h6>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                       <div class="col-md-12">
+                           <div class="panel panel-default panel-fill">
+                               <h3 class="panel-title">Description de l'offre</h3>
+                           </div>
+                           {{ advert.content | nl2br  }}
+                        </div>
+
+                    </div> <!-- end row -->
+                </div> <!-- panel-body -->
+            </div> <!-- panel -->
+
+
+            <div class="tab-pane">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Personal-Information -->
+                        <div class="panel panel-default panel-fill">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Cette annonce est parue dans les catégories suivantes :</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                {% if not advert.categories.empty %}
+                                    <p>
+                                        {% for category in advert.categories %}
+                                            <a href="{{ path('advertsByCategorie',{'category':category.id} ) }}">
+
+                                                <strong class="btn btn-default">  {{ category.name }} </strong> {% if not loop.last %}
+                                            </a> , {% endif %}
+                                        {% endfor %}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                      <!-- Personal-Information -->
+
+                        <div class="panel panel-default panel-fill">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Les Compétences recherchées :</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                {% if not advert.skills.empty %}
+                                    <p>
+                                        {% for skill in advert.skills %}
+                                        <a href="{{ path('advertsBySkill',{'skill':skill.id} ) }}">
+                                           <strong class="btn btn-default">{{ skill.name }}</strong>
+                                        </a>
+                                            {% if not loop.last %} , {% endif %}
+                                        {% endfor %}
+                                    </p>
+                                {% else %}
+                                    <p> Cette offre ne demande pas des compétences particulier</p>
+
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <!-- Personal-Information -->
+
+                        <div class="panel panel-default panel-fill">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Postuler :</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <p>
+
+                                        <a href="{{ path('platform_application_postule', {'slug': advert.slug}) }}" class="btn btn-primary center-block">
+                                            Postuler à cette offre
+                                        </a>
+                                    </p>
+                                {% else %}
+
+                                    <p>
+                                        Vous devez vous <a href="{{ path('fos_user_security_login') }}"> connecter
+                                        </a> pour  Postuler à cette offre. Inscription gratuite
+                                    </p>
+
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <p>
+                <a href="{{ path('platform_home') }}" class="btn btn-default">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                    Retour à la liste
+                </a>
+            </p>
+
+        </div> <!-- col -->
+    </div> <!-- End row -->
+
+
+{% endblock %}

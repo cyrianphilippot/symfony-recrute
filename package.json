@@ -1,0 +1,12 @@
+{
+  "name": "indeed_ynov_2021",
+  "version": "0.0.1",
+  "description": "Indeed du pauvre",
+  "main": "index.js",
+  "scripts": {
+    "start": "sass --watch src/styles/app.scss:map/css/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,104 @@
+{# src/PlatformBundle/Resources/view/Advert/view.html.twig #}
+{% extends '::default/index.html.twig' %}
+
+{% block title %}
+    Lecture d'une candidature - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">BR Plateforme Job</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">BR Plateforme Job</a></li>
+                <li><a href="active">application</a></li>
+
+            </ol>
+        </div>
+    </div>
+
+    <!-- List Groups -->
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="panel panel-default">
+
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+            </div> <!-- panel -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div style="float: left; margin-right: 1em;">
+                        {# On vérifie qu'une image soit bien associée à l'article #}
+
+                    </div>
+                    <h3 class="panel-title">CANDIDATURES à l'offre {{ application.advert.title }}</h3>
+                    <h6>le {{ application.date|date('d/m/Y') }} </h6>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                       <div class="col-md-12">
+                           <div class="panel panel-default panel-fill">
+                               <h3 class="panel-title">Votre message de motivation</h3>
+                           </div>
+                           {{ application.content | nl2br  }}
+                        </div>
+
+
+                    </div> <!-- end row -->
+                </div> <!-- panel-body -->
+            </div> <!-- panel -->
+
+
+            <div class="tab-pane">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel-fill">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Mon CV :</h3>
+                            </div>
+                            <div class="panel-body">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <p>
+            <a href="{{ path('platform_view', {'slug': application.advert.slug}) }}" class="btn btn-info">
+                AFFICHER LE DETAIL DE L'OFFRE</a>
+            <p>
+                {{ form_start(delete_form) }}
+                <input class="btn btn-danger"  type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+
+            </p>
+
+
+            <p>
+                <a href="{{ path('platform_application') }}" class="btn btn-pink">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                    Retour à la liste des candidatures
+                </a>
+
+            </p>
+
+        </div> <!-- col -->
+
+
+
+
+
+    </div> <!-- End row -->
+
+
+{% endblock %}

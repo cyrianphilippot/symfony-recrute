@@ -1,0 +1,38 @@
+{% extends '::default/index.html.twig' %}
+
+
+{% block title %}
+    List page - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">BR Plateforme Job</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">BR Plateforme Job</a></li>
+                <li><a href="#">Pages</a></li>
+                <li class="active">{{ page.title }}</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ page.title }}</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+
+                        {{ page.content|raw  }}
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div><!-- End of Row -->
+
+{% endblock %}

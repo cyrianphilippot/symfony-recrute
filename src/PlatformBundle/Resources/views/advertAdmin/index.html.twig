@@ -1,0 +1,101 @@
+{% extends '::admin/index.html.twig' %}
+
+
+{% block title %}
+    Admin - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+    <div class="col-sm-12">
+        <h4 class="pull-left page-title">Administration</h4>
+        <ol class="breadcrumb pull-right">
+            <li><a href="#">Administration</a></li>
+            <li class="active">Adverts List</li>
+        </ol>
+    </div>
+</div>
+
+
+
+    <div class="panel">
+        {# On affiche tous les messages flash dont le nom est « info » #}
+        {% for message in app.session.flashbag.get('info') %}
+            <div class="alert alert-info">Message flash : {{ message }}</div>
+        {% endfor %}
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Adverts list</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+                                    <table class="table table-bordered table-striped" id="datatable-editable">
+                                        <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Published</th>
+                                            <th>Nbapplications</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for advert in adverts %}
+                                            <tr class="gradeA">
+                                                <td>{{ advert.title }}</td>
+                                                <td>{% if advert.published %}Yes{% else %}No{% endif %}</td>
+                                                <td>{{ advert.nbApplications }}</td>
+                                                <td>
+                                                    <a href="{{ path('admin_advert_show', { 'id': advert.id }) }}"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{ path('admin_advert_edit', { 'id': advert.id }) }}"><i class="fa fa-edit"></i></a>
+                                                </td>
+                                            </tr>
+
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Row -->
+
+            <div class="col-sm-12">
+                <div class="m-b-30 text-center">
+                    <a class="btn btn-primary waves-effect waves-light" href="{{ path('admin_advert_new') }}">Create a new advert <i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block script %}
+
+
+<script src="{{ asset('Resources/public/assets/magnific-popup/magnific-popup.js') }}"></script>
+<script src="{{ asset('Resources/public/assets/jquery-datatables-editable/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('Resources/public/assets/datatables/dataTables.bootstrap.js') }}"></script>
+<script src="{{ asset('Resources/public/assets/jquery-datatables-editable/datatables.editable.init.js') }}"></script>
+
+{% endblock %}
+
+
+
+
+
+
+

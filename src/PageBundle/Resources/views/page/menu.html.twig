@@ -1,0 +1,11 @@
+ <ul class="list-unstyled">
+
+      {% for page in listPages %}
+        <li>
+          <a href="{{ path('page_show', {'slug': page.slug}) }}">
+              {{ page.title }}
+          </a>
+        </li>
+      {% endfor %}
+
+  </ul>

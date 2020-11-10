@@ -1,0 +1,96 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="wrapper-page">
+    <div class="panel panel-color panel-primary panel-pages">
+        <div class="panel-heading bg-img">
+            <div class="bg-overlay"></div>
+            <h3 class="text-center m-t-10 text-white"> Créer un nouveau compte</h3>
+        </div>
+
+
+        <div class="panel-body">
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register form-horizontal m-t-20'}}) }}
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        {{  'form.fullname'|trans }}
+                    </div>
+                    <div class="col-xs-12">
+                        {{ form_widget(form.fullname,{'attr': {'class': 'form-control input-lg'} } ) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        {{ 'form.email'|trans }}
+                    </div>
+                    <div class="col-xs-12">
+                        {{ form_widget(form.email,{'attr': {'class': 'form-control input-lg' } } ) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        {{ 'form.phone'|trans }}
+                    </div>
+                    <div class="col-xs-12">
+                        {{ form_widget(form.phone,{'attr': {'class': 'form-control input-lg'} } ) }}
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        {{ 'form.username'|trans }}
+                    </div>
+                    <div class="col-xs-12">
+                        {{ form_widget(form.username,{'attr': {'class': 'form-control input-lg' } } ) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        {{ 'form.password'|trans }}
+                    </div>
+                    <div class="col-xs-12">
+                        {{ form_widget(form.plainPassword.first,{'attr': {'class': 'form-control input-lg' } } ) }}
+                    </div>
+                </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    {{ 'form.password_confirmation'|trans }}
+                </div>
+                <div class="col-xs-12">
+                    {{ form_widget(form.plainPassword.second,{'attr': {'class': 'form-control input-lg' } } ) }}
+                </div>
+            </div>
+
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <div class="checkbox checkbox-primary">
+                            <input id="checkbox-signup" type="checkbox" checked="">
+                            <label for="checkbox-signup">
+                                I accept <a href="#">Terms and Conditions</a>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group text-center m-t-40">
+                    <div class="col-xs-12">
+                        <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />
+                    </div>
+                </div>
+
+                <div class="form-group m-t-30">
+                    <div class="col-sm-12 text-center">
+                        <a href="{{ path('fos_user_security_login') }}">Vous avez déjà un compte?</a>
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+</div>
+

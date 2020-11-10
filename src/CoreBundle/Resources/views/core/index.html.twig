@@ -1,0 +1,72 @@
+{% extends '::default/index.html.twig' %}
+
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">BR Plateforme Job</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">BR Plateforme Job</a></li>
+                <li><a href="#">Advert</a></li>
+
+                <li class="active">Home</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Platform d'annonce</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Dans le cadre de mon autoformation via le site OpenClassrooms du tutoriel intitulé
+                        <span class="dropcap text-primary">
+                            <a href="">Développez votre site web avec le framework Symfony</a></span>.
+                    </p>
+                    <p>J'ai crée un projet sous le Framework Symfony 3.3 de la plateforme d'annonce .
+                    </p>
+                    <p>
+                        Ce projet me permet de prendre en main Symfony et de l'appliquer à un cas concret, à savoir une plateforme d'offre d'emploi (ou annonce)
+                        <br/> Les taches réalisées dans ce projet sont :
+                    <ul>
+                        <li>Gérer les annonces , les categories  , les compétences</li>
+                        <li>Créer un système pour nettoyer les entités (Purger les annonces )</li>
+                        <li>Sécurité et gestion des utilisateurs</li>
+                        <li>Pouvoir déposer des candidatures</li>
+
+                    </ul>
+                   </p>
+
+                </div>
+            </div>
+        </div>
+    </div><!-- End of Row -->
+    <!-- List Groups -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dernières annonces</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ render(controller("PlatformBundle:Advert:menu", {'limit': 3} )) }}
+                        </div>
+
+                    </div> <!-- end row -->
+                </div> <!-- panel-body -->
+            </div> <!-- panel -->
+        </div> <!-- col -->
+    </div> <!-- End row -->
+
+
+
+{% endblock %}

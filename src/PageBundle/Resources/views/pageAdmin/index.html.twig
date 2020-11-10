@@ -1,0 +1,66 @@
+{% extends '::admin/index.html.twig' %}
+
+
+{% block title %}
+    List page - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">Administration</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">Administration</a></li>
+                <li class="active">Pages List</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Pages list</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Created</th>
+                                    <th>Updated</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for page in pages %}
+                                    <tr>
+                                        <td><a href="{{ path('admin_page_show', { 'id': page.id }) }}">{{ page.id }}</a></td>
+                                        <td>{{ page.title }}</td>
+                                        <td>{% if page.created %}{{ page.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td>{% if page.updated %}{{ page.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td>
+                                        <a href="{{ path('admin_page_show', { 'id': page.id }) }}"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ path('admin_page_edit', { 'id': page.id }) }}"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="m-b-30 text-center">
+                <a class="btn btn-primary" href="{{ path('admin_page_new') }}">Create a new page</a>
+            </div>
+        </div>
+    </div> <!-- End Row -->
+
+{% endblock %}

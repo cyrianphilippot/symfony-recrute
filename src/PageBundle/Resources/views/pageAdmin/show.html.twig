@@ -1,0 +1,80 @@
+{% extends '::admin/index.html.twig' %}
+
+
+{% block title %}
+    Page - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">Administration</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">Administration</a></li>
+                <li><a href="#">Show page</a></li>
+                <li class="active">{{ page.title }}</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Page</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ page.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Title</th>
+                                    <td>{{ page.title }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Content</th>
+                                    <td>{{ page.content|raw }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Slug</th>
+                                    <td>{{ page.slug }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Created</th>
+                                    <td>{% if page.created %}{{ page.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Updated</th>
+                                    <td>{% if page.updated %}{{ page.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Row -->
+
+
+
+    <ul>
+        <li>
+            <a class="btn btn-default" href="{{ path('admin_page_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a class="btn btn-primary" href="{{ path('admin_page_edit', { 'id': page.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

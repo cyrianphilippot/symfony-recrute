@@ -1,0 +1,116 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="wraper container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="bg-picture text-center" style="background-image:url('{{ asset('Resources/public/images/big/bg.jpg') }}')">
+                <div class="bg-picture-overlay"></div>
+                <div class="profile-info-name">
+                    {% if app.user.image is not null %}
+                        <img
+                                src="{{ asset(app.user.image.AssetPath) }}"
+                                alt="{{ app.user.username }}"
+                                class="thumb-lg img-circle img-thumbnail"
+                        />
+
+                    {% else %}
+                        <img src="{{ asset('Resources/public/images/avatar-1.jpg') }}" class="thumb-lg img-circle img-thumbnail" alt="profile-image">
+                    {% endif %}
+
+                    <h3 class="text-white">{{ app.user.username }}</h3>
+                </div>
+            </div>
+            <!--/ meta -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tab-pane">
+                <!-- Personal-Information -->
+                <div class="panel panel-default panel-fill">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Edit Profile</h3>
+                    </div>
+
+                    <div class="panel-body">
+
+                        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+
+                            <div class="form-group">
+                                <label for="Email">{{ 'profile.show.fullname'|trans }}</label>
+                                {{ form_widget(form.fullname,{'attr': {'class': 'form-control'} }) }}
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">{{ 'profile.show.email'|trans }}</label>
+                                {{ form_widget(form.email,{'attr': {'class': 'form-control'} }) }}
+                            </div>
+                            <div class="form-group">
+                                <label for="Username">{{ 'profile.show.username'|trans }}</label>
+                                {{ form_widget(form.username,{'attr': {'class': 'form-control' } }) }}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Email">{{ 'profile.show.phone'|trans }}</label>
+                                {{ form_widget(form.phone,{'attr': {'class': 'form-control'} }) }}
+                            </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Image</label>
+                            <div class="col-md-1">
+
+
+                                {% if app.user.image is not null %}
+                                    <img
+                                            src="{{ asset(app.user.image.AssetPath) }}"
+                                            alt="{{ app.user.username }}"
+                                            height="60"
+                                    />
+
+                                {% else %}
+                                    <img src="{{ asset('Resources/public/images/avatar-1.jpg') }}" height="60" alt="profile-image">
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-9">
+                                <label class="col-md-2 control-label">file</label>
+                                <div class="col-md-10">
+                                    {{ form_widget(form.image.file,{'attr': {'class': 'form-control'} } ) }}
+                                </div>
+
+                                <label class="col-md-2 control-label">name</label>
+                                <div class="col-md-10">
+                                    {{ form_widget(form.image.name,{'attr': {'class': 'form-control'} } ) }}
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                            <div class="form-group">
+                                <label for="AboutMe">About Me</label>
+                                {{ form_widget(form.aboutMe,{'attr': {'class': 'form-control', 'rows': 4 } }) }}
+
+                            </div>
+
+
+                        <div class="form-group">
+                            <label for="Password">{{ 'profile.show.current_password'|trans }}</label>
+                            {{ form_widget(form.current_password,{'attr': {'class': 'form-control'} }) }}
+                        </div>
+
+
+
+                            <input class="btn btn-primary" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
+                <!-- Personal-Information -->
+            </div>
+        </div>
+    </div>
+</div> <!-- container -->
+
+

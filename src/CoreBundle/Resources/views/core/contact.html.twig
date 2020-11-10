@@ -1,0 +1,87 @@
+{% extends '::default/index.html.twig' %}
+
+
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">BR Plateforme Job</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">BR Plateforme Job</a></li>
+                <li><a href="#">Pages</a></li>
+                <li class="active">Contact </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- List Groups -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+            </div> <!-- panel -->
+        </div> <!-- col -->
+    </div> <!-- End row -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">CONTACTEZ-NOUS</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Vous souhaitez obtenir des informations ? Vous desirez nous laisser un message ?
+                        <br />Remplissez ce formulaire afin d'entrer en contact avec notre équipe.</p>
+                    <br/>
+
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-8">
+
+                    {{ form_start(form) }}
+
+
+                    <div class="form-group">
+                        <label for="Name">Nom</label>
+                        {{ form_widget(form.name,{'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="Email"> E-mail </label>
+                        {{ form_widget(form.email,{'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="Subject"> Sujet </label>
+                        {{ form_widget(form.subject,{'attr': {'class': 'form-control' } }) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="body"> Message  </label>
+                        {{ form_widget(form.body,{'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <input type="submit" value="Envoyer" class="btn btn-primary span3"/>
+
+
+                    {{ form_end(form) }}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End of Row -->
+
+
+
+
+
+
+
+{% endblock %}

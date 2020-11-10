@@ -1,0 +1,118 @@
+{% extends '::admin/index.html.twig' %}
+
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">Administration</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">Administration</a></li>
+                <li><a href="#">Edit Utilisateur</a></li>
+                <li class="active">{{ utilisateur.username }}</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="panel">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3 class="panel-title">Utilisateur Edit</h3></div>
+                    <div class="panel-body">
+                        {{  form_start(edit_form,{'attr': {'class': 'form-horizontal'} }) }}
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Username</label>
+                            <div class="col-md-6">
+                                {{ form_widget(edit_form.username,{'attr': {'class': 'form-control'} } ) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Full Name</label>
+                            <div class="col-md-6">
+                                {{ form_widget(edit_form.fullname,{'attr': {'class': 'form-control'} } ) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Email</label>
+                            <div class="col-md-6">
+                                {{ form_widget(edit_form.email,{'attr': {'class': 'form-control'} } ) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Phone</label>
+                            <div class="col-md-6">
+                                {{ form_widget(edit_form.phone,{'attr': {'class': 'form-control'} } ) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Image</label>
+                            <div class="col-md-1">
+
+                                {% if utilisateur.image is not null %}
+                                    <img
+                                            src="{{ pathDefault }}uploads/{{ utilisateur.image.path }}"
+                                            alt="{{ utilisateur.image.name }}"
+                                            height="60"
+                                    />
+                                {% endif %}
+                            </div>
+                            <div class="col-md-9">
+                                <label class="col-md-2 control-label">file</label>
+                                <div class="col-md-10">
+                                    {{ form_widget(edit_form.image.file,{'attr': {'class': 'form-control'} } ) }}
+                                </div>
+
+                                <label class="col-md-2 control-label">name</label>
+                                <div class="col-md-10">
+                                    {{ form_widget(edit_form.image.name,{'attr': {'class': 'form-control'} } ) }}
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">About Me</label>
+                            <div class="col-md-10">
+                                {{ form_widget(edit_form.aboutMe,{'attr': {'class': 'form-control', 'rows': '7'} } ) }}
+                            </div>
+                        </div>
+                        <div class="form-group m-b-0">
+                            <div class="col-sm-offset-2 col-sm-9">
+                                <input type="submit" class="btn btn-info" value="Save" />
+                            </div>
+                        </div>
+                        {{ form_end(edit_form) }}
+
+                    </div> <!-- panel-body -->
+                </div> <!-- panel -->
+            </div> <!-- col -->
+        </div> <!-- End row -->
+
+
+
+    </div> <!-- end Panel -->
+
+    <div class="col-sm-12">
+        <div class="m-b-30 text-center">
+            <a class="btn btn-primary" href="{{ path('admin_utilisateur_index') }}">Back to the list</a>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="m-b-30 text-center">
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+
+{% endblock %}
+

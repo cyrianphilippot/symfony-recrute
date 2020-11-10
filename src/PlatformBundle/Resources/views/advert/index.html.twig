@@ -1,0 +1,83 @@
+{% extends '::default/index.html.twig' %}
+
+
+{% block title %}
+    Annonces - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">BR Plateforme Job</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">BR Plateforme Job</a></li>
+                {%  if category == null and skill == null %}
+                    <li class="active">Adverts List</li>
+                {% elseif skill!= null %}
+                    <li><a href="#">Adverts</a></li>
+                    <li class="active">{{ skill.name }}</li>
+                {% else %}
+                    <li><a href="#">Adverts</a></li>
+                    <li class="active">{{ category.name }}</li>
+                {% endif %}
+            </ol>
+        </div>
+    </div>
+
+    <!-- List Groups -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+
+                {% for message in app.session.flashbag.get('info') %}
+                    <div class="alert alert-info">Message flash : {{ message }}</div>
+                {% endfor %}
+
+            </div> <!-- panel -->
+        </div> <!-- col -->
+    </div> <!-- End row -->
+
+    <!-- List Group with Description -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {%  if category == null and skill == null %}
+                    <h3 class="panel-title">Tous des annonces</h3>
+                        {% elseif skill!= null %}
+                            <h3 class="panel-title">Annonces pour compétence : {{ skill.name }}</h3>
+                        {% else %}
+                            <h3 class="panel-title">Annonces pour la catégory  : {{ category.name }}</h3>
+                    {% endif %}
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        {% for advert in listAdverts %}
+                            <a href="{{ path('platform_view', {'slug': advert.slug}) }}" class="list-group-item">
+                                <h3 class="list-group-item-heading"> {{ advert.title }}</h3>
+                                <h6>par {{ advert.author }} , le {{ advert.date|date('d/m/Y') }}</h6>
+                                <p class="list-group-item-text">
+
+                                    {{ advert.content| truncate(200)  }}
+                                </p>
+                            </a>
+
+                        {% else %}
+                            <p>Pas (encore !) d'annonces dans la catégory  : {{ category.name }}</p>
+                            <br/>
+                            <a class="btn btn-default" href="{{ path('platform_home') }}">Retour à la liste des annonces</a>
+                        {% endfor %}
+                    </div> <!-- list-group -->
+                </div> <!-- Panel-body -->
+
+            </div> <!-- panel -->
+            <div class="text-center">
+                {{ knp_pagination_render(listAdverts) }}
+            </div>
+        </div> <!-- col -->
+    </div> <!-- End row -->
+
+{% endblock %}
+
+

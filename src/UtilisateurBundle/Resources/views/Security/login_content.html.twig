@@ -1,0 +1,78 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="wrapper-page">
+
+    <div class="row">
+        <div class="col-sm-12">
+            {% if error %}
+                <div class="alert alert-danger">
+                    <h4>
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </h4>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+    <div class="panel panel-color panel-primary panel-pages">
+        <div class="panel-heading bg-img">
+            <div class="bg-overlay"></div>
+            <h3 class="text-center m-t-10 text-white"> Connexion to <strong>Platforme </strong> </h3>
+        </div>
+
+
+        <div class="panel-body">
+            <form action="{{ path("fos_user_security_check") }}" class="form-horizontal m-t-20" method="post">
+
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input class="form-control input-lg " type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" placeholder="{{ 'security.login.username'|trans }}"/>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input class="form-control input-lg" type="password" id="password" name="_password" required="required" autocomplete="current-password" placeholder="{{ 'security.login.password'|trans }}"/>
+
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <div class="checkbox checkbox-primary">
+                            <input id="remember_me" name="_remember_me" value="on"  type="checkbox">
+                            <label for="remember_me">
+                            {{ 'security.login.remember_me'|trans }}
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group text-center m-t-40">
+                    <div class="col-xs-12">
+                        <input class="btn btn-primary btn-lg w-lg" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    </div>
+                </div>
+
+                <div class="form-group m-t-30">
+                    <div class="col-sm-7">
+                        <a href="{{ path('fos_user_resetting_request') }}"><i class="fa fa-lock m-r-5"></i> Mot de passe perdu ?</a>
+                    </div>
+                    <div class="col-sm-5 text-right">
+                        <a href="{{ path('fos_user_registration_register') }}">Pas encore inscrit ?</a>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

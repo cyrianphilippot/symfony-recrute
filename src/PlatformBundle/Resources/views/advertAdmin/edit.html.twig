@@ -1,0 +1,36 @@
+{% extends '::admin/index.html.twig' %}
+
+
+{% block title %}
+    Accueil - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">Administration</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">Administration</a></li>
+                <li><a href="#">Edit Advert</a></li>
+                <li class="active">{{ advert.title }}</li>
+            </ol>
+        </div>
+    </div>
+
+
+    {{ include("PlatformBundle:advertAdmin:form.html.twig") }}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_advert_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+{% endblock %}

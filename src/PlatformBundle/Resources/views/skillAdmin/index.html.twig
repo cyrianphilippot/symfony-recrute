@@ -1,0 +1,73 @@
+{% extends '::admin/index.html.twig' %}
+
+
+{% block title %}
+    Accueil - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">Administration</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">Administration</a></li>
+                <li class="active">Skills List</li>
+            </ol>
+        </div>
+    </div>
+
+<div class="panel">
+
+    {# On affiche tous les messages flash dont le nom est « info » #}
+    {% for message in app.session.flashbag.get('info') %}
+        <div class="alert alert-info">Message flash : {{ message }}</div>
+    {% endfor %}
+    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Skills list</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for skill in skills %}
+                                    <tr>
+                                        <td><a href="{{ path('admin_skill_show', { 'id': skill.id }) }}">{{ skill.id }}</a></td>
+                                        <td>{{ skill.name }}</td>
+                                        <td>
+                                            <a href="{{ path('admin_skill_show', { 'id': skill.id }) }}"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ path('admin_skill_edit', { 'id': skill.id }) }}"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Row -->
+        <div class="col-sm-12">
+            <div class="m-b-30 text-center">
+            <a class="btn btn-primary" href="{{ path('admin_skill_new') }}">Create a new skill</a>
+            </div>
+        </div>
+
+    </div>
+    <!-- end: page -->
+
+</div> <!-- end Panel -->
+{% endblock %}

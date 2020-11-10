@@ -1,0 +1,57 @@
+{% extends '::admin/index.html.twig' %}
+
+
+{% block title %}
+    Skill - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="pull-left page-title">Administration</h4>
+            <ol class="breadcrumb pull-right">
+                <li><a href="#">Administration</a></li>
+                <li><a href="#">Edit Skill</a></li>
+                <li class="active">{{ skill.name }}</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Skill edit</h3></div>
+                <div class="panel-body">
+                    {{  form_start(edit_form,{'attr': {'class': 'form-horizontal'} }) }}
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Titre</label>
+                        <div class="col-md-6">
+                            {{ form_widget(edit_form.name,{'attr': {'class': 'form-control'} } ) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group m-b-0">
+                        <div class="col-sm-offset-2 col-sm-9">
+                            <input class="btn btn-primary" type="submit" value="Edit" />
+                        </div>
+                    </div>
+                    {{ form_end(edit_form) }}
+
+                </div> <!-- panel-body -->
+            </div> <!-- panel -->
+        </div> <!-- col -->
+    </div> <!-- End row -->
+
+    <div class="col-sm-12">
+        <div class="m-b-30 text-center">
+            <a class="btn btn-primary" href="{{ path('admin_skill_index') }}">Back to the list</a>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="m-b-30 text-center">
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

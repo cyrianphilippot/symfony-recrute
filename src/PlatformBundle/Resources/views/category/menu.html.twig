@@ -1,0 +1,15 @@
+  {# src/PlatformBundle/Resources/views/Advert/menu.html.twig #}
+
+  {# Ce template n'hérite de personne, tout comme le template inclus avec {% include %}. #}
+
+  <ul class="list-group">
+    {% for category in categories %}
+      <li class="list-group-item">
+        <h5 class="list-group-item-heading">
+          <a href="{{ path('advertsByCategorie',{'category':category.id} ) }}">
+              {{ category.name }}
+          </a>
+       </h5>
+      </li>
+    {% endfor %}
+  </ul>

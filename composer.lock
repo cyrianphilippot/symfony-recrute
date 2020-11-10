@@ -45,24 +45,24 @@
             ],
             "authors": [
                 {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
+                    "name": "moi moi",
+                    "email": "moi@gmail.com"
                 },
                 {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
+                    "name": "toi toi",
+                    "email": "toi@gmail.com"
                 },
                 {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
+                    "name": "coo kies",
+                    "email": "cookies@gmail.com"
                 },
                 {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
+                    "name": "cyrian philippot",
+                    "email": "cyrian.philippot@ynov.com"
                 },
                 {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
+                    "name": "Maj Uscule",
+                    "email": "majuscule@gmail.com"
                 }
             ],
             "description": "Docblock Annotations Parser",
@@ -115,25 +115,25 @@
                 "MIT"
             ],
             "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
+                 {
+                    "name": "moi moi",
+                    "email": "moi@gmail.com"
                 },
                 {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
+                    "name": "toi toi",
+                    "email": "toi@gmail.com"
                 },
                 {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
+                    "name": "coo kies",
+                    "email": "cookies@gmail.com"
                 },
                 {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
+                    "name": "cyrian philippot",
+                    "email": "cyrian.philippot@ynov.com"
                 },
                 {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
+                    "name": "Maj Uscule",
+                    "email": "majuscule@gmail.com"
                 }
             ],
             "description": "Caching library offering an object-oriented API for many cache backends",
@@ -180,25 +180,25 @@
                 "MIT"
             ],
             "authors": [
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
+                 {
+                    "name": "moi moi",
+                    "email": "moi@gmail.com"
                 },
                 {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
+                    "name": "toi toi",
+                    "email": "toi@gmail.com"
                 },
                 {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
+                    "name": "coo kies",
+                    "email": "cookies@gmail.com"
                 },
                 {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
+                    "name": "cyrian philippot",
+                    "email": "cyrian.philippot@ynov.com"
                 },
                 {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
+                    "name": "Maj Uscule",
+                    "email": "majuscule@gmail.com"
                 }
             ],
             "description": "Collections Abstraction library",

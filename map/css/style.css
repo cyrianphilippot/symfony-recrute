@@ -1,0 +1,41 @@
+input:focus {
+  outline: none;
+}
+body {
+  height: 200vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-family: "garamond", cursive;
+  color: #1d2fce;
+}
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+.form-container input {
+  padding: 25px;
+  font-size: 2rem;
+  border: none;
+  border-bottom: 2px solid #a81258;
+  background: transparent;
+}
+.form-container input[type="submit"] {
+  margin-top: 2rem;
+  border: 2px solid #a81258;
+  transition: all 0.7s;
+}
+.form-container input[type="submit"]:hover {
+  background: #a81258;
+  color: #fff;
+  cursor: pointer;
+}
+.form-container h1 {
+  text-align: center;
+}
+.message {
+  color: rgb(24, 73, 12);
+  font-size: 1.4rem;
+}

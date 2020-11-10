@@ -1,0 +1,18 @@
+
+
+<ul class="list-group">
+    {% for advert in listAdverts %}
+      <li class="list-group-item">
+        <h3 class="list-group-item-heading">
+          <a href="{{ path('platform_view', {'slug': advert.slug}) }}">
+              {{ advert.title }}
+          </a>
+       </h3>
+      <h6>Par {{ advert.author }}  , le {{ advert.date|date('d/m/Y') }} </h6>
+        <p class="list-group-item-text">
+            {{ advert.content| truncate(200)  }}
+        </p>
+        <a href="{{ path('platform_view', {'slug': advert.slug}) }}" class="btn btn-info">AFFICHER LE DETAIL DE L'OFFRE</a>
+      </li>
+    {% endfor %}
+</ul>

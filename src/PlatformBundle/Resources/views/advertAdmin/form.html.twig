@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">Advert form</h3></div>
+            <div class="panel-body">
+                {{  form_start(form,{'attr': {'class': 'form-horizontal'} }) }}
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Titre</label>
+                    <div class="col-md-6">
+                        {{ form_widget(form.title,{'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Author</label>
+                    <div class="col-md-6">
+                        {{ form_widget(form.author,{'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Contenu</label>
+                    <div class="col-md-10">
+                        {{ form_widget(form.content,{'attr': {'class': 'form-control', 'rows': '7'} } ) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Published</label>
+
+                    <div class="col-md-10">
+                        {{ form_widget(form.published,{'attr': {'class': ''} } ) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Image</label>
+                    <div class="col-md-1">
+
+                        {% if advert.image is not null %}
+                            <img
+                                    src="{{ pathDefault }}uploads/{{ advert.image.path }}"
+                                    alt="{{ advert.title }}"
+                                    height="60"
+                            />
+                        {% endif %}
+                    </div>
+                    <div class="col-md-9">
+                        <label class="col-md-2 control-label">file</label>
+                        <div class="col-md-10">
+                            {{ form_widget(form.image.file,{'attr': {'class': 'form-control'} } ) }}
+                        </div>
+
+                            <label class="col-md-2 control-label">name</label>
+                        <div class="col-md-10">
+                            {{ form_widget(form.image.name,{'attr': {'class': 'form-control'} } ) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Categories</label>
+                    <div class="col-md-10">
+                        {{ form_widget(form.categories,{'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Skills</label>
+                    <div class="col-md-10">
+
+                      {{ form_widget(form.skills,{'attr': {'class': 'form-control'} } ) }}
+
+                    </div>
+                </div>
+
+                <div class="form-group m-b-0">
+                    <div class="col-sm-offset-2 col-sm-9">
+                        <input type="submit" class="btn btn-info" value="Save" />
+                    </div>
+                </div>
+                {{ form_end(form) }}
+
+            </div> <!-- panel-body -->
+        </div> <!-- panel -->
+    </div> <!-- col -->
+</div> <!-- End row -->
