@@ -1,3 +1,7 @@
-# ATTENTION
+# Bien le bonjour cher intrépide humain.
 
-### 1vs9 en cours !
+### !⚠️! Attention personnes atteintes de défaillance cardiaque s'abstenir de continuer !⚠️!
+---
+ Merci à toi, ta compréhension et ton petit cœur tout mou.
+
+                                         (Exellente journée)
