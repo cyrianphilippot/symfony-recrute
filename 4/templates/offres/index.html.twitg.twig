@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Indeed
+{% endblock %}
+{% block body %}
+	<div class="container-sm">
+		<h2 id="title">{{offre.title}}</h2>
+		<p id="description">{{offre.description}}</p>
+		<p id="address">{{offre.adresse}}</p>
+		<p id="contrat">{{offre.contrat.contrats}}</p>
+		<p id="duree">{{offre.typeContrat.type}}</p>
+		{% if offre.MissionEnd %}
+			<p id="finmission">
+				{{offre.MissionEnd|date("m/d/Y")}}
+			</p>
+		{% endif %}
+		<button type="button" class="btn btn-primary" onclick="alert('vous avez postulez!');">Postuler</button>
+	</div>
+{% endblock %}
