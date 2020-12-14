@@ -1,0 +1,11 @@
+<h1>email checkup</h1>
+
+<p>
+    follow : <br><br>
+    <a href="{{ signedUrl|raw }}">Confirm my Email</a>.
+    This link will expire in {{ expiresAt|date('g') }} hour(s).
+</p>
+
+<p>
+    a+
+</p>
